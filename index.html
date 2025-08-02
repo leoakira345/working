@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tic Tac Toe Online</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    .view {
+      display: none;
+      padding: 20px;
+    }
+
+    .view.active {
+      display: block;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      grid-gap: 10px;
+      justify-content: center;
+      margin: 20px auto;
+    }
+
+    .cell {
+      width: 100px;
+      height: 100px;
+      background: #fff;
+      border: 2px solid #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2em;
+      cursor: pointer;
+    }
+
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 1em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Menu View -->
+  <div id="menuView" class="view active">
+    <h1>Tic Tac Toe</h1>
+    <button id="startButton">Play Locally</button>
+    <button id="multiplayerButton">Play Online</button>
+  </div>
+
+  <!-- Local Game View -->
+  <div id="localGameView" class="view">
+    <h2>Local Game</h2>
+    <div id="localGameGrid" class="grid"></div>
+    <button id="backToMenuButtonLocal">Back to Menu</button>
+  </div>
+
+  <!-- Online Lobby View -->
+  <div id="onlineLobbyView" class="view">
+    <h2>Finding Opponent...</h2>
+    <p id="matchmakingMessage">Connecting...</p>
+    <button id="cancelMatchmakingButton">Cancel</button>
+    <button id="backToMenuButtonOnline">Back to Menu</button>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>
